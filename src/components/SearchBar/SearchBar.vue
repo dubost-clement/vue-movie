@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "SearchBar",
 
@@ -28,12 +26,6 @@ export default {
     return {
       movieName: ""
     };
-  },
-
-  computed: {
-    ...mapGetters({
-      currentMovie: "getCurrentMovie"
-    })
   },
 
   methods: {

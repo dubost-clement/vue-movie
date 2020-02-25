@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="container">
+      <SearchBar />
+      <div class="row">
+        <CurrentMovie />
+        <SuggestionMovie />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import SearchBar from "./components/SearchBar/SearchBar";
+import CurrentMovie from "./components/CurrentMovie/CurrentMovie";
+import SuggestionMovie from "./components/SuggestionMovie/SuggestionMovie";
 
 export default {
   name: "App",
+
   components: {
-    HelloWorld
+    SearchBar,
+    CurrentMovie,
+    SuggestionMovie
+  },
+
+  created() {
+    this.$store.dispatch("initialMovieData");
   }
 };
 </script>

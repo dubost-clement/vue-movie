@@ -40,6 +40,7 @@ export default {
     changeVideo(suggestion) {
       this.$store.commit("setCurrentMovie", suggestion);
       this.$store.dispatch("getVideo", this.currentMovie.id);
+      this.$store.dispatch("changeRecommendation", this.currentMovie.id);
     }
   }
 };

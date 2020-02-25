@@ -68,6 +68,17 @@ export default new Vuex.Store({
         .then(response => {
           context.commit("setCurrentMovie", response.data.results[0]);
           context.dispatch("getVideo", context.getters.getCurrentMovie.id);
+          context.dispatch("changeRecommendation", context.getters.getCurrentMovie.id)
+        });
+    },
+
+    changeRecommendation(context, movieId) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&page=1`
+        )
+        .then(response => {
+          context.commit("setMovieSuggestion", response.data.results.slice(0, 3));
         });
     }
   }

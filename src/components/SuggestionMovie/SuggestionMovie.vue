@@ -1,21 +1,29 @@
 <template>
   <div class="col-md-4">
-    <div
+    <div 
       class="card mb-5"
-      style=""
       v-for="suggestion in suggestions"
       :key="suggestion.id"
     >
-      <img
-        class="card-img-top"
-        :src="`https://image.tmdb.org/t/p/w342/${suggestion.poster_path}`"
-        :alt="suggestion.title"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ suggestion.title }}</h5>
-        <a href="#" class="btn btn-primary" @click="changeVideo(suggestion)"
-          >Bande annonce</a
-        >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            :src="`https://image.tmdb.org/t/p/w342/${suggestion.poster_path}`"
+            class="card-img" 
+            :alt="suggestion.title">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ suggestion.title }}</h5>
+            <a 
+            href="#"
+            class="btn btn-primary"
+            @click="changeVideo(suggestion)"
+            >
+              Bande annonce
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

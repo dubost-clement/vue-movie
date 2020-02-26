@@ -41,7 +41,7 @@ export default new Vuex.Store({
           context.commit("setCurrentMovie", response.data.results[0]);
           context.commit(
             "setMovieSuggestion",
-            response.data.results.slice(1, 4)
+            response.data.results.slice(1, 5)
           );
           context.dispatch("getVideo", context.getters.getCurrentMovie.id);
         });
@@ -78,7 +78,7 @@ export default new Vuex.Store({
           `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&page=1`
         )
         .then(response => {
-          context.commit("setMovieSuggestion", response.data.results.slice(0, 3));
+          context.commit("setMovieSuggestion", response.data.results.slice(0, 4));
         });
     }
   }

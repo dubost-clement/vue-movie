@@ -1,5 +1,6 @@
 <template>
-  <div class="col-md-8 border">
+  <div class="col-md-8">
+    <div class="border">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe
         class="embed-responsive-item"
@@ -11,6 +12,7 @@
       <h2>{{ getCurrentMovie.title }}</h2>
       <p>{{ getCurrentMovie.overview }}</p>
       <p>date de sortie: {{ convertDate }}</p>
+    </div>
     </div>
   </div>
 </template>

@@ -10,6 +10,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ movie.title }}</h5>
               <p class="card-text">{{ movie.overview | reduceString }}</p>
+              <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>
               <p class="card-text"><small class="text-muted">Date de sortie {{ convertDate(movie.release_date) }}</small></p>
             </div>
           </div>
@@ -42,6 +43,10 @@ export default {
   methods: {
     convertDate(date) {
       return dayjs(date).format("DD/MM/YYYY");
+    },
+
+    detailsMovie(movieId){
+      this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
     }
   },
 

@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home";
 import Cinema from "../views/Cinema";
-
+import MovieDetails from "../views/MovieDetails";
 
 Vue.use(VueRouter);
 
@@ -17,7 +17,13 @@ const routes = [
     path: "/cinema",
     name: "cinema",
     component: Cinema
-  }
+  },
+
+  {
+    path: "/movie/:id",
+    name: "movieDetails",
+    component: MovieDetails
+  },
 ];
 
 const router = new VueRouter({

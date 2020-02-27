@@ -30,7 +30,8 @@ export default {
 
   methods: {
     searchMovie() {
-      this.$store.dispatch("searchMovie", this.movieName);
+      this.$store.dispatch("searchRequest", this.movieName);
+      this.$router.push({ name: 'search', params: { keyword:  this.movieName}});
     }
   }
 };

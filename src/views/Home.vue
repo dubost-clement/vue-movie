@@ -1,25 +1,20 @@
 <template>
   <div class="container">
     <SearchBar />
-    <div class="row">
-      <CurrentMovie />
-      <SuggestionMovie />
-    </div>
+    <PopularMovies />
   </div>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar/SearchBar";
-import CurrentMovie from "../components/CurrentMovie/CurrentMovie";
-import SuggestionMovie from "../components/SuggestionMovie/SuggestionMovie";
+import PopularMovies from "../components/PopularMovies/PopularMovies";
 
 export default {
   name: "home",
 
   components: {
     SearchBar,
-    CurrentMovie,
-    SuggestionMovie
+    PopularMovies
   }
 };
 </script>

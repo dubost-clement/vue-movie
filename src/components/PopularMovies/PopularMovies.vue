@@ -1,0 +1,49 @@
+<template>
+  <div class="popular-movies">
+    <h1 class="text-center mb-4">Les films populaires du moments</h1>
+    <div class="row">
+      <div class="col-md-4" v-for="movie in popularMovies" :key="movie.id">
+        <div class="card">
+          <img :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" class="card-img-top" :alt="movie.title">
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "popularMovies",
+
+  data() {
+    return{
+      popularMovies: []
+    }
+  },
+  
+  created() {
+    axios
+      .get("https://api.themoviedb.org/3/movie/popular?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&page=1&region=FR")
+      .then(response => {
+        this.popularMovies = response.data.results.slice(0, 12);
+      });
+  },
+
+  methods: {
+    detailsMovie(movieId) {
+      this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
+      this.$store.dispatch("movieRequest", movieId);
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+
+</style>

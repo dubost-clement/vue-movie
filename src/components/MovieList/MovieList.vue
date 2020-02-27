@@ -49,12 +49,6 @@ export default {
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
       this.$store.dispatch("movieRequest", movieId);
     }
-  },
-
-  filters: {
-    reduceString(value, nbr) {
-      return value.length < nbr ? value : value.slice(0, nbr) + "...";
-    }
   }
 };
 </script>

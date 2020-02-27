@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home";
 import Cinema from "../views/Cinema";
 import MovieDetails from "../views/MovieDetails";
+import Search from "../views/Search";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,12 @@ const routes = [
     path: "/movie/:id",
     name: "movieDetails",
     component: MovieDetails
+  },
+
+  {
+    path: "/search/movie/:keyword",
+    name: "search",
+    component: Search
   },
 ];
 

@@ -32,7 +32,7 @@ export default {
           path: "/"
         },
         {
-          name: "Au cinéma",
+          name: "Cinéma",
           path: "/cinema"
         }
       ]

@@ -2,7 +2,6 @@
   <div id="app">
     <NavigationBar />
     <router-view />
-    
   </div>
 </template>
 
@@ -14,10 +13,6 @@ export default {
 
   components: {
     NavigationBar,
-  },
-
-  created() {
-    this.$store.dispatch("initialMovieData");
   }
 };
 </script>

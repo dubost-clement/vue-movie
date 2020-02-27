@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Details from "../components/MovieDetails/details";
+import Details from "../components/MovieDetails/Details";
 
 export default {
   name: "movieDetails",

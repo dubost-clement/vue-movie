@@ -8,8 +8,8 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">{{ movie.title }}</h5>
-              <p class="card-text">{{ movie.overview | reduceString }}</p>
+              <h5 class="card-title">{{ movie.title | reduceString(25)}}</h5>
+              <p class="card-text">{{ movie.overview | reduceString(150) }}</p>
               <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>
               <p class="card-text"><small class="text-muted">Date de sortie {{ convertDate(movie.release_date) }}</small></p>
             </div>
@@ -51,8 +51,8 @@ export default {
   },
 
   filters: {
-    reduceString(string) {
-      return string.slice(0, 200) + "...";
+    reduceString(value, nbr) {
+      return value.length < nbr ? value : value.slice(0, nbr) + "...";
     }
   }
 };

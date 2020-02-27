@@ -36,6 +36,10 @@ export default {
     convertDate() {
       return dayjs(this.getCurrentMovie.release_date).format("DD/MM/YYYY");
     }
+  },
+
+  destroyed() {
+    this.$store.dispatch("initialMovieData");
   }
 };
 </script>

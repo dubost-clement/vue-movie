@@ -8,18 +8,12 @@
 
 <script>
 import NavigationBar from "./components/NavigationBar";
-/*import SearchBar from "./components/SearchBar/SearchBar";
-import CurrentMovie from "./components/CurrentMovie/CurrentMovie";
-import SuggestionMovie from "./components/SuggestionMovie/SuggestionMovie";*/
 
 export default {
   name: "App",
 
   components: {
     NavigationBar,
-    //SearchBar,
-    //CurrentMovie,
-    //SuggestionMovie
   },
 
   created() {

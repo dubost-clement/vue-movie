@@ -4,7 +4,8 @@
       <div class="embed-responsive embed-responsive-16by9">
         <iframe
           class="embed-responsive-item"
-          :src="`${baseUrl}${getyoutubeKey}`"
+          :src="baseUrl + getyoutubeKey"
+          :key="getMovie.id"
           title="title"
         ></iframe>
       </div>
@@ -70,13 +71,18 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getyoutubeKey"]),
+    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getyoutubeKey"])
   },
 
   methods: {
     seeRecommendation(movieId) {
-      this.$store.dispatch("movieRequest", movieId);
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
+    }
+  },
+
+  watch: {
+    "$route.params.id" : function() {
+      this.$store.dispatch("movieRequest", this.$route.params.id);
     }
   }
 };

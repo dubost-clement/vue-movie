@@ -53,12 +53,17 @@ export default {
 
     detailsMovie(movieId){
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
-      this.$store.dispatch("movieRequest", movieId);
     }
   },
 
   computed: {
     ...mapGetters(["getRequest"])
+  },
+
+  watch: {
+    "$route.params.keyword" : function() {
+      this.$store.dispatch("searchRequest", this.$route.params.keyword);
+    }
   }
 };
 </script>

@@ -47,7 +47,6 @@ export default {
 
     detailsMovie(movieId){
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
-      this.$store.dispatch("movieRequest", movieId);
     }
   }
 };

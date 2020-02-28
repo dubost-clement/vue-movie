@@ -21,6 +21,8 @@
         >
           {{ genre.name }}
         </span>
+        <h4>Durée</h4>
+        <span>{{runtime}}</span>
       </div>
     </div>
     <div class="col-lg-4">
@@ -71,7 +73,18 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getyoutubeKey"])
+    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getyoutubeKey"]),
+
+    runtime() {
+      const hours = Math.floor(this.getMovie.runtime / 60);
+      let minutes = this.getMovie.runtime % 60;
+
+      if(minutes < 10) {
+        minutes = "0" + minutes
+      }
+      
+      return hours + "h" + minutes
+    }
   },
 
   methods: {

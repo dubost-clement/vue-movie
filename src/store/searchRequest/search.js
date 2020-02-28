@@ -11,7 +11,10 @@ export default {
 
   mutations: {
     changeRequest(state, payload) {
-      state.request = payload;
+      state.request = payload.filter(item => {
+        //supprime les films qui ne sont pas encore disponibles
+        return new Date(item.release_date).getTime() < new Date().getTime();
+      });
     }
   },
 

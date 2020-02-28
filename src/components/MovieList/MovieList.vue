@@ -1,17 +1,19 @@
 <template>
   <div class="row">
     <div class="col-12 col-lg-6" v-for="movie in movieList" :key="movie.id">
-      <div class="card mb-5">
+      <div class="card mb-5 shadow-sm">
         <div class="row no-gutters">
           <div class="col-md-4">
             <img :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" class="card-img" alt="...">
           </div>
           <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ movie.title | reduceString(25)}}</h5>
+            <div class="card-body d-flex flex-column justify-content-center h-100">
+              <h2 class="card-title h5">{{ movie.title | reduceString(25)}}</h2>
               <p class="card-text">{{ movie.overview | reduceString(150) }}</p>
-              <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>
               <p class="card-text"><small class="text-muted">Date de sortie {{ convertDate(movie.release_date) }}</small></p>
+              <div>
+                <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>
+              </div>
             </div>
           </div>
         </div>

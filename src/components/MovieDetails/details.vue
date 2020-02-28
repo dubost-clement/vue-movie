@@ -1,56 +1,60 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe
-          class="embed-responsive-item"
-          :src="baseUrl + getyoutubeKey"
-          :key="getMovie.id"
-          title="title"
-        ></iframe>
-      </div>
-      <h2 class="text-center">{{ getMovie.title }}</h2>
-      <p>{{ getMovie.overview }}</p>
-      <hr class="mt-5">
-      <div>
-        <h4>Genres</h4>
-        <span 
-          v-for="genre in getGenres"
-          :key="genre.id"
-          class="badge badge-secondary mr-2"
-        >
-          {{ genre.name }}
-        </span>
-        <h4>Durée</h4>
-        <span>{{runtime}}</span>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <h2 class="text-center">recommendations</h2>
-      <div 
-        class="card mb-5"
-        v-for="recommendation in getRecommendations"
-        :key="recommendation.id"
-      >
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img
-              :src="`https://image.tmdb.org/t/p/w342/${recommendation.poster_path}`"
-              class="card-img" 
-              :alt="recommendation.title">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe
+              class="embed-responsive-item"
+              :src="baseUrl + getyoutubeKey"
+              :key="getMovie.id"
+              title="title"
+            ></iframe>
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ recommendation.title }}</h5>
-              <button 
-              class="btn btn-primary"
-              @click="seeRecommendation(recommendation.id)"
-              >
-                Bande annonce
-              </button>
+          <h2 class=" mt-2 mb-4">{{ getMovie.title }}</h2>
+          <p>{{ getMovie.overview }}</p>
+        </div>
+        <div class="col-lg-3">
+          <div class="bg-white border rounded-lg p-2 h-100">
+            <div class="mb-3">
+              <h4>Date de sortie</h4>
+              <span>{{ convertDate(getMovie.release_date) }}</span>
             </div>
+            <div class="mb-3">
+              <h4>Durée</h4>
+              <span>{{runtime}}</span>
+            </div>
+            <h4>Genres</h4>
+            <span 
+              v-for="genre in getGenres"
+              :key="genre.id"
+              class="badge badge-primary mr-2"
+            >
+              {{ genre.name }}
+            </span>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <hr />
+      <h2 class="mb-4">Recommendations</h2>
+      <div class="row">
+        <figure 
+          class="figure col-sm-6 col-lg-3"
+          v-for="recommendation in getRecommendations"
+          :key="recommendation.id"
+        >
+          <img :src="`https://image.tmdb.org/t/p/w342/${recommendation.poster_path}`" class="figure-img img-fluid rounded" :alt="recommendation.title">
+          <figcaption class="figure-caption text-center">
+            <a
+              href="#"
+              @click.prevent="seeRecommendation(recommendation.id)"
+            >
+              {{recommendation.title}}
+            </a>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -58,6 +62,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import dayjs from "dayjs";
 
 export default {
   name: "Details",
@@ -90,6 +95,10 @@ export default {
   methods: {
     seeRecommendation(movieId) {
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
+    },
+
+    convertDate(date) {
+      return dayjs(date).format("DD/MM/YYYY");
     }
   },
 

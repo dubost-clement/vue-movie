@@ -19,7 +19,7 @@ export default {
     changeMovieDetails(state, payload) {
       state.movie = payload;
       state.genres = payload.genres;
-      state.recommendations = payload.recommendations.results.slice(0, 3);
+      state.recommendations = payload.recommendations.results.slice(0, 4);
       state.youtubeKey = payload.videos.results[0].key;
     }
   },

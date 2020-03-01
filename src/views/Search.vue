@@ -7,7 +7,18 @@
       <div class="card mb-5 shadow-sm">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img :src="`https://image.tmdb.org/t/p/w342/${result.poster_path}`" class="card-img" alt="...">
+            <img 
+              v-if="result.poster_path"
+              :src="`https://image.tmdb.org/t/p/w342/${result.poster_path}`"
+              alt="..."
+              class="card-img" 
+            >
+            <img 
+              v-else
+              src="https://via.placeholder.com/342x513.jpg"
+              alt="..."
+              class="card-img" 
+            >
           </div>
           <div class="col-md-8">
             <div class="card-body d-flex flex-column justify-content-center h-100">

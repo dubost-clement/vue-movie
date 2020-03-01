@@ -5,14 +5,16 @@ export default {
     movie: {},
     genres: [],
     recommendations: [],
-    youtubeKey: ""
+    youtubeKey: "",
+    actors: []
   },
 
   getters: {
     getMovie: state => state.movie,
     getGenres: state => state.genres,
     getRecommendations: state => state.recommendations,
-    getyoutubeKey: state => state.youtubeKey
+    getYoutubeKey: state => state.youtubeKey,
+    getActors: state => state.actors
   },
 
   mutations: {
@@ -20,14 +22,17 @@ export default {
       state.movie = payload;
       state.genres = payload.genres;
       state.recommendations = payload.recommendations.results.slice(0, 4);
-      state.youtubeKey = payload.videos.results[0].key;
+      if(payload.videos.results[0]) {
+        state.youtubeKey = payload.videos.results[0].key;
+      }
+      state.actors = payload.credits.cast.slice(0, 3);
     }
   },
 
   actions: {
     movieRequest(context, movieId) {
       axios
-      .get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&append_to_response=videos,recommendations`)
+      .get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&append_to_response=videos,recommendations,credits`)
       .then(response => {
         context.commit("changeMovieDetails", response.data);
       });

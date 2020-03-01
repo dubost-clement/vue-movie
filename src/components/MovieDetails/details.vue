@@ -6,9 +6,10 @@
           <div class="embed-responsive embed-responsive-16by9">
             <iframe
               class="embed-responsive-item"
-              :src="baseUrl + getyoutubeKey"
+              v-if="getYoutubeKey"
+              :src="baseUrl + getYoutubeKey"
               :key="getMovie.id"
-              title="title"
+              :title="getMovie.title"
             ></iframe>
           </div>
           <h2 class=" mt-2 mb-4">{{ getMovie.title }}</h2>
@@ -24,21 +25,33 @@
               <h4>Durée</h4>
               <span>{{runtime}}</span>
             </div>
+            <div class="mb-3">
             <h4>Genres</h4>
-            <span 
-              v-for="genre in getGenres"
-              :key="genre.id"
-              class="badge badge-primary mr-2"
-            >
-              {{ genre.name }}
-            </span>
+              <span 
+                v-for="genre in getGenres"
+                :key="genre.id"
+                class="badge badge-primary mr-2"
+              >
+                {{ genre.name }}
+              </span>
+            </div>
+            <div class="mb-3">
+              <h4>Acteurs principaux</h4>
+              <span
+                class="d-block"
+                v-for="actor in getActors"
+                :key="actor.id"
+              >
+                {{actor.name}}
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
       <hr />
-      <h2 class="mb-4">Recommendations</h2>
+      <h2 class="mb-4">Recommandations</h2>
       <div class="row">
         <figure 
           class="figure col-sm-6 col-lg-3"
@@ -51,7 +64,7 @@
               href="#"
               @click.prevent="seeRecommendation(recommendation.id)"
             >
-              {{recommendation.title}}
+              {{recommendation.title | reduceString(25)}}
             </a>
           </figcaption>
         </figure>
@@ -78,7 +91,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getyoutubeKey"]),
+    ...mapGetters(["getMovie", "getGenres", "getRecommendations", "getYoutubeKey", "getActors"]),
 
     runtime() {
       const hours = Math.floor(this.getMovie.runtime / 60);

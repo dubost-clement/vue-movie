@@ -4,6 +4,7 @@ import Home from "../views/Home";
 import Cinema from "../views/Cinema";
 import MovieDetails from "../views/MovieDetails";
 import Search from "../views/Search";
+import Actor from "../views/Actor";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,12 @@ const routes = [
     name: "search",
     component: Search
   },
+
+  {
+    path: "/actor/:id",
+    name: "actor",
+    component: Actor
+  }
 ];
 
 const router = new VueRouter({

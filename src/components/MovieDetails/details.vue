@@ -37,13 +37,15 @@
             </div>
             <div class="mb-3">
               <h4>Acteurs principaux</h4>
-              <span
+              <a
+                href="#"
                 class="d-block"
                 v-for="actor in getActors"
                 :key="actor.id"
+                @click.prevent="seeActor(actor.id)"
               >
                 {{actor.name}}
-              </span>
+              </a>
             </div>
           </div>
         </div>
@@ -108,6 +110,10 @@ export default {
   methods: {
     seeRecommendation(movieId) {
       this.$router.push({ name: 'movieDetails', params: { id:  movieId}});
+    },
+
+    seeActor(actorId) {
+      this.$router.push({ name: 'actor', params: { id:  actorId}});
     },
 
     convertDate(date) {

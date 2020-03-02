@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="mb-4">Ses films</h2>
+    <h2 class="mb-4">Retrouvez {{genre}} dans</h2>
     <div class="row">
       <figure 
         class="figure col-sm-6 col-lg-3"
@@ -28,7 +28,11 @@ export default {
   name: "actorMovies",
 
   computed: {
-    ...mapGetters(["getActorMovies"])
+    ...mapGetters(["getActorMovies", "getActor"]),
+
+    genre() {
+      return this.getActor.gender === 1 ? "la" : "le";
+    }
   },
 
   methods: {

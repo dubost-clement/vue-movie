@@ -6,7 +6,7 @@
         <b-card
           :img-src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
           :img-alt="movie.title"
-          class="mb-5 shadow-sm"
+          class="mb-5 shadow-sm hover-transition"
         >
           <b-card-text class="text-center">
             <h2 class="card-title h6">{{movie.title | reduceString(25)}}</h2>

@@ -11,25 +11,26 @@
       </div>
       <div class="mb-3">
       <h4>Genres</h4>
-        <span 
-          v-for="genre in getGenres"
+        <b-badge 
+          v-for="genre in getGenres" 
           :key="genre.id"
-          class="badge badge-primary mr-2"
+          variant="primary"
+          class="mr-2"
         >
           {{ genre.name }}
-        </span>
+        </b-badge>
       </div>
       <div class="mb-3">
         <h4>Acteurs principaux</h4>
-        <a
+        <b-link
           href="#"
-          class="d-block"
           v-for="actor in getActors"
           :key="actor.id"
           @click.prevent="seeActor(actor.id)"
+          class="d-block"
         >
           {{actor.name}}
-        </a>
+        </b-link>
       </div>
     </div>
   </b-col>

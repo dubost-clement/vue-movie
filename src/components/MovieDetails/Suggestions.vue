@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h2 class="mb-4 center-sm">Recommandations</h2>
+    <h2 class="mt-5 mb-4 center-sm">Recommandations</h2>
     <b-row>
       <figure 
         class="figure col-sm-6 col-lg-3 center-sm"
@@ -9,7 +9,7 @@
       >
         <img :src="`https://image.tmdb.org/t/p/w342/${recommendation.poster_path}`" class="figure-img img-fluid rounded" :alt="recommendation.title">
         <figcaption class="figure-caption text-center">
-          <b-link href="#foo" @click.prevent="seeRecommendation(recommendation.id)">
+          <b-link href="#" @click.prevent="seeRecommendation(recommendation.id)">
             {{recommendation.title | reduceString(25)}}
           </b-link>
         </figcaption>

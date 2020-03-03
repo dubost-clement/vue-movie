@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col lg="6" v-for="movie in movieList" :key="movie.id">
-      <b-card no-body class="mb-5 shadow-sm">
+      <b-card no-body class="mb-5 shadow-sm hover-transition">
         <b-row no-gutters>
           <b-col md="4">
             <b-card-img 

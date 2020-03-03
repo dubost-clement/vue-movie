@@ -29,4 +29,11 @@ export default {
     text-align: center
   }
 }
+
+.hover-transition{
+  transition: .4s;
+  &:hover {
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+}
 </style>

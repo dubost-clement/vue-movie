@@ -17,4 +17,16 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.center-sm {
+  @media screen and (max-width: 576px) {
+    text-align: center
+  }
+}
+
+.center-md {
+  @media screen and (max-width: 768px) {
+    text-align: center
+  }
+}
+</style>

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 center-md">
         <img
           class="img-fluid"
           :src="`https://image.tmdb.org/t/p/w342/${getActor.profile_path}`"
           alt="">
       </div>
       <div class="col-md-8">
-        <h1>{{getActor.name}}</h1>
+        <h1 class="center-md">{{getActor.name}}</h1>
         <p>{{convertDate(getActor.birthday)}}</p>
         <p v-if="getActor.biography">{{getActor.biography}}</p>
       </div>

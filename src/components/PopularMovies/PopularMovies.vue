@@ -1,17 +1,20 @@
 <template>
   <div class="popular-movies">
-    <h1 class="text-center mb-4">Les films populaires du moments</h1>
-    <div class="row">
-      <div class="col-md-6 col-lg-4" v-for="movie in popularMovies" :key="movie.id">
-        <div class="card mb-5 shadow-sm">
-          <img :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" class="card-img-top" :alt="movie.title">
-          <div class="card-body text-center">
+    <h1 class="text-center mb-4">Films populaires du moments</h1>
+    <b-row>
+      <b-col md="6" lg="4" v-for="movie in popularMovies" :key="movie.id">
+        <b-card
+          :img-src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+          :img-alt="movie.title"
+          class="mb-5 shadow-sm"
+        >
+          <b-card-text class="text-center">
             <h2 class="card-title h6">{{movie.title | reduceString(25)}}</h2>
-            <button class="btn btn-primary" @click="detailsMovie(movie.id)">plus d'infos</button>           
-          </div>
-        </div>
-      </div>
-    </div>
+            <b-button variant="primary" @click="detailsMovie(movie.id)">Plus d'infos</b-button>        
+          </b-card-text>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

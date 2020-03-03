@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <h2 class="mb-4">Retrouvez {{genre}} dans</h2>
+    <h2 class="mb-4 center-sm">Retrouvez {{genre}} dans</h2>
     <div class="row">
       <figure 
-        class="figure col-sm-6 col-lg-3"
+        class="figure col-sm-6 col-lg-3 center-sm"
         v-for="actorMovie in getActorMovies"
         :key="actorMovie.id"
       >
@@ -43,10 +43,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-figure {
-  @media screen and (max-width: 576px) {
-    text-align: center
-  }
-}
-</style>
+<style lang="scss"></style>

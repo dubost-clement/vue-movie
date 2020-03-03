@@ -1,21 +1,15 @@
 <template>
-  <form @submit.prevent="searchMovie">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="recherchez un film"
-        aria-label="recherchez un film"
-        aria-describedby="button-addon2"
+  <b-form @submit.prevent="searchMovie" class="mb-5">
+    <b-input-group>
+      <b-form-input 
         v-model="movieName"
-      />
-      <div class="input-group-append">
-        <button class="btn btn-secondary" id="button-addon2">
-          Rechercher
-        </button>
-      </div>
-    </div>
-  </form>
+        placeholder="Recherchez un film"
+      ></b-form-input>
+      <b-input-group-append>
+        <b-button type="submit" variant="primary">Rechercher</b-button>
+      </b-input-group-append>
+    </b-input-group>
+  </b-form>
 </template>
 
 <script>

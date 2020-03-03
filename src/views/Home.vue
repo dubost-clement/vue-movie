@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <b-container>
     <SearchBar />
     <PopularMovies />
-  </div>
+  </b-container>
 </template>
 
 <script>

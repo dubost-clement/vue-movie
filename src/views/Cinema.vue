@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <b-container>
     <h1 class="mb-4 text-center">Actuellement au cinéma</h1>
     <MovieList />
-  </div>
+  </b-container>
 </template>
 
 <script>

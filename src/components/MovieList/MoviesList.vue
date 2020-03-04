@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col lg="6" v-for="movie in movieList" :key="movie.id">
+    <b-col lg="6" v-for="movie in getRequest" :key="movie.id">
       <b-card no-body class="mb-5 shadow-sm hover-transition">
         <b-row no-gutters>
           <b-col md="4">
@@ -26,22 +26,29 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
-  name: "MovieList",
+  name: "MoviesList",
 
-  data() {
-    return {
-      movieList: []
+  props: {
+    getter: {
+      type: String,
+      required: true
+    },
+    
+    request: {
+      type: String,
+      required: true
     }
   },
 
   created() {
-    axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=5692bf3d64e2467087e0ab1a404449e9&language=fr-FR&page=1&region=FR")
-      .then(response => {
-        this.movieList = response.data.results;
-      });
+    this.$store.dispatch(`${this.request}`, this.$route.params.keyword);
+  },
+
+  computed: {
+    getRequest() {
+      return this.$store.getters[`${this.getter}`];
+    }
   },
 
   methods: {

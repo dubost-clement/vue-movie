@@ -44,13 +44,7 @@ export default {
   name: "search",
 
   components: {
-    SearchBar
-  },
-
-  data() {
-    return {
-      movieResults: []
-    }
+    SearchBar,
   },
 
   created() {

@@ -1,18 +1,21 @@
 <template>
   <b-container>
+    <SearchBar />
     <h1 class="mb-4 text-center">Actuellement au cinéma</h1>
-    <MovieList />
+    <MoviesList getter="getCinema" request="cinemaRequest" />
   </b-container>
 </template>
 
 <script>
-import MovieList from "../components/MovieList/MovieList";
+import SearchBar from "../components/SearchBar/SearchBar";
+import MoviesList from "../components/MovieList/MoviesList";
 
 export default {
   name: "cinema",
 
   components: {
-    MovieList
+    SearchBar,
+    MoviesList
   }
 };
 </script>
